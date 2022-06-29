@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorageService} from "../../../core/services/local-storage.service";
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  localStorageChanges$ = this.localStorageService.changes$;
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.localStorageChanges$.subscribe(value => {
+      console.log(value);
+    });
   }
 
 }

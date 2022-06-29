@@ -1,0 +1,60 @@
+<div class="flex flex-col max-w-300 md:min-w-160 max-h-screen -m-6">
+  <!-- Header -->
+  <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+    <div class="text-lg font-medium">Create New Page</div>
+    <button
+      mat-icon-button
+      [tabIndex]="-1"
+      (click)="closeDialog()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+
+  <!-- Create Page form -->
+  <form
+    class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto"
+    [formGroup]="composeForm">
+    <!-- Subject -->
+    <mat-form-field>
+      <mat-label>Image Url</mat-label>
+      <input
+        matInput
+        [formControlName]="'image'">
+    </mat-form-field>
+
+    <div class="flex items-center justify-center my-5">
+      or
+    </div>
+
+    <!-- Body -->
+    <div id="quill">
+      <p>Content *</p>
+      <quill-editor [styles]="editorStyle" placeholder="Enter Text" [modules]="quillModules"
+                    formControlName="body" >
+      </quill-editor>
+    </div>
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-4 sm:mt-6">
+      <div class="flex items-center mt-4 sm:mt-0">
+        <!-- Discard -->
+        <button
+          class="sm:mx-3"
+          mat-stroked-button
+          (click)="closeDialog()">
+          <span>Discard</span>
+        </button>
+        <!-- Send -->
+        <button
+          class="order-first sm:order-last"
+          mat-flat-button
+          [color]="'primary'"
+          (click)="persist()"
+          [disabled]="this.checkValidator()"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
