@@ -1,0 +1,37 @@
+.container {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  max-height: 800px;
+  max-width: 700px;
+  padding: 2em 2em 0;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  user-select: none;
+}
+
+.title,
+{
+  height: 2.5em;
+  min-width: 4.5em;
+
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5em 0.7em;
+  transition: background 20ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
+
+  &:not(:last-child) {
+    margin-right: 1em;
+  }
+}

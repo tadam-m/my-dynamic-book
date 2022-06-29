@@ -1,0 +1,35 @@
+<!-- carousel -->
+<div class="carousel">
+  <ng-container *ngFor="let page of pages; let i = index">
+    <div *ngIf="page.type === 'empty'"
+         class="flex flex-col justify-center items-center">
+      <h1 class="text-bold text-2xl">No pages found !</h1>
+      <img
+        src="assets/images/undraw_Books_re_8gea.png"
+        alt=""/>
+    </div>
+
+    <img
+      *ngIf="i === currentSlide && page.type === 'image'"
+      [src]="page.content"
+      class="slide"
+      [@slideAnimation]="animationType"
+      alt=""/>
+    <div class="slide"
+         *ngIf="i === currentSlide && page.type === 'text'"
+         [@slideAnimation]="animationType">
+      <article class="prose">
+        <div [innerHTML]="page.content"></div>
+      </article>
+
+    </div>
+  </ng-container>
+
+  <!-- controls -->
+  <button class="control prev" (click)="onPreviousClick()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()">
+    <span class="arrow right"></span>
+  </button>
+</div>
