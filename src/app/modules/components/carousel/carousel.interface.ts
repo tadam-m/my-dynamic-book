@@ -1,4 +1,4 @@
-export interface Slide {
-  headline?: string;
-  src: string;
+export interface Pages {
+  type?: string;
+  content: string;
 }

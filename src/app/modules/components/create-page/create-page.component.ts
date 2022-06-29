@@ -55,6 +55,7 @@ export class CreatePageComponent implements OnInit {
         this.localStorageService.set('pages', currentData);
       }
     }
+    this.matDialogRef.close();
   }
 
   closeDialog(): void {

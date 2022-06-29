@@ -1,27 +1,25 @@
 <!-- carousel -->
 <div class="carousel">
-  <ng-container *ngFor="let slide of slides; let i = index">
+  <ng-container *ngFor="let page of pages; let i = index">
+    <div *ngIf="page.type === 'empty'"
+         class="flex flex-col justify-center items-center">
+      <h1 class="text-bold text-2xl">No pages found !</h1>
+      <img
+        src="assets/images/undraw_Books_re_8gea.png"
+        alt=""/>
+    </div>
+
     <img
-      *ngIf="i === currentSlide"
-      [src]="slide.src"
+      *ngIf="i === currentSlide && page.type === 'image'"
+      [src]="page.content"
       class="slide"
       [@slideAnimation]="animationType"
-     alt=""/>
+      alt=""/>
     <div class="slide"
-      *ngIf="i === currentSlide"
-      [@slideAnimation]="animationType">
-      <article class="prose lg:prose-xl"
-      >
-        <h1>Garlic bread with cheese: What the science tells us</h1>
-        <p>
-          For years parents have espoused the health benefits of eating garlic bread with cheese to their
-          children, with the food earning such an iconic status in our culture that kids will often dress
-          up as warm, cheesy loaf for Halloween.
-        </p>
-        <p>
-          But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
-          springing up around the country.
-        </p>
+         *ngIf="i === currentSlide && page.type === 'text'"
+         [@slideAnimation]="animationType">
+      <article class="prose">
+        <div [innerHTML]="page.content"></div>
       </article>
 
     </div>

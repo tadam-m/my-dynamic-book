@@ -26,9 +26,9 @@
   border-radius: 0.5em;
 }
 
-.slide:hover {
-  transform: scale(1.025);
-}
+//.slide:hover {
+//  transform: scale(1.025);
+//}
 
 // =========================
 // Next and Prev buttons
@@ -36,7 +36,7 @@
 .control {
   border: none;
   background-color: transparent;
-  outline: 0; // remove blue outline border, but make sure they are still focussable for accessibility
+  outline: 0;
   position: absolute;
   cursor: pointer;
   display: flex;
@@ -48,12 +48,11 @@
   font-size: 3em;
   user-select: none;
   height: 100%;
-  opacity: 80%;
+  opacity: 0;
   // opacity effect on hover
   transition: opacity 150ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
 
-  &:hover,
-  &:focus {
+  &:hover {
     opacity: 1;
   }
 
